@@ -7,6 +7,7 @@ const clientes = [
 // ['Fulano Da Silva', 'Ciclano Santos']
 
 let clientesFinal = []
+//forEach pode ser usado para várias coisas, porém o map manipula apenas arrays
 clientes.forEach(function (cliente) {
   clientesFinal.push(cliente.name + ' ' + cliente.lastname)
 })
