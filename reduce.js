@@ -8,6 +8,7 @@ function teste() {
   clientes.forEach((cliente) => console.log(cliente.lastname))
   
 }
-
 teste()
+
+const box = document.querySelectorAll('.box')
 
