@@ -7,17 +7,34 @@ const clientes = [
 // acc = accumulator
 // curr = current
 
-const clientesFinal = clientes.reduce((acc, curr) => {
-  if (curr.age >= 18) {
-    acc.pass.push(curr)
-  } else {
-    acc.fail.push(curr)
-  }
+const clientesFinal = clientes.reduce(
+  (acc, curr) => {
+    if (curr.age >= 18) {
+      acc.pass.push(curr)
+    } else {
+      acc.fail.push(curr)
+    }
 
-  return acc
-}, {
-  pass: [],
-  fail: []
-})
+    return acc
+  },
+  {
+    pass: [],
+    fail: []
+  }
+)
 
 console.log(clientesFinal)
+
+// '2 - 3 - 4 - 5'
+const numeros = [0, 1, 2, 3, 4]
+
+const numerosFinal = numeros.reduce((acc, curr) => {
+  if (curr <= 3) {
+    acc += `${curr + 1 + ' - '}`
+  } else {
+    acc += `${curr + 1}`
+  }
+  return acc
+}, '')
+
+console.log(numerosFinal)
