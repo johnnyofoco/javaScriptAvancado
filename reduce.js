@@ -4,11 +4,20 @@ const clientes = [
   { name: 'Beltrano', lastname: 'Moreira', age: 20 }
 ]
 
-function teste() {
-  clientes.forEach((cliente) => console.log(cliente.lastname))
-  
-}
-teste()
+// acc = accumulator
+// curr = current
 
-const box = document.querySelectorAll('.box')
+const clientesFinal = clientes.reduce((acc, curr) => {
+  if (curr.age >= 18) {
+    acc.pass.push(curr)
+  } else {
+    acc.fail.push(curr)
+  }
 
+  return acc
+}, {
+  pass: [],
+  fail: []
+})
+
+console.log(clientesFinal)
