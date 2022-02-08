@@ -1,32 +1,45 @@
 /*
-PROMISE
+PROMISE (PROMESSA)
+ executa uma função com a promessa que assim que terminar ela irá executar a promise.
 */
 
-function exibirNaTela(dados) {
+function exibirNaTela (dados) {
   console.log('exibir na tela', dados)
 }
 
+function exibirErro (dados) {
+  console.log('Ops, deu erro!')
+}
+
+
+
 const botaoCarregar = document.querySelector('#botaoCarregar')
 
-botaoCarregar.onclick = () => carregarFotos(exibirNaTela)
+botaoCarregar.onclick = () =>
+  fetch('https://jsonplaceholder.typicode.com/photos', 'GET')
+    .then(exibirNaTela)
+    .catch(exibirErro)
 
+function fetch(url, method) {
+  return new Promise((resolve, reject) => {
+    const xhttp = new XMLHttpRequest()
 
-function carregarFotos (callback) {
-  const xhttp = new XMLHttpRequest()
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        const response = JSON.parse(this.responseText)
 
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      const response = JSON.parse(this.responseText)
-      
-      if (callback) {
-        callback()
+        resolve(response)
+      }
+
+      if (this.status === 404) {
+        reject()
       }
     }
-  }
 
-  //abrir conexão
-  xhttp.open('GET', 'https://jsonplaceholder.typicode.com/photos', true) //true = assincrono
+    //abrir conexão
+    xhttp.open(method, url, true) //true = assincrono
 
-  //enviar a conexão
-  xhttp.send()
+    //enviar a conexão
+    xhttp.send()
+  })
 }
