@@ -2,7 +2,7 @@
 asyncAwait
 */
 
-function transformarEmJson(response) {
+function transformarEmJson (response) {
   //console.log(response)
   //console.log(response.json)
   return response.json()
@@ -18,13 +18,12 @@ function exibirErro (dados) {
 
 const botaoCarregar = document.querySelector('#botaoCarregar')
 
-const configs = {
-  method: 'GET',
-  header: {}
-}
+botaoCarregar.onclick = aoClicarBotao
 
-botaoCarregar.onclick = () =>
-  fetch('https://jsonplaceholder.typicode.com/photos',configs)
+async function aoClicarBotao () {
+  const dados = await fetch('https://jsonplaceholder.typicode.com/photos')
     .then(transformarEmJson)
-    .then(exibirNaTela)
     .catch(exibirErro)
+  
+  console.log(dados)
+}
