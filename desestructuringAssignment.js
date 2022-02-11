@@ -7,13 +7,8 @@ const obj = {
   idade: 35
 }
 
-const{ nome, idade} = obj
-
-
-
-
-
-
+//desestructuringAssignment:
+const { nome, idade } = obj
 
 function transformarEmJson (response) {
   //console.log(response)
@@ -34,9 +29,12 @@ const botaoCarregar = document.querySelector('#botaoCarregar')
 botaoCarregar.onclick = aoClicarBotao
 
 async function aoClicarBotao () {
-  const dados = await fetch('https://jsonplaceholder.typicode.com/photos')
+  const dados = await fetch('https://jsonplaceholder.typicode.com/users/1')
     .then(transformarEmJson)
     .catch(exibirErro)
-  
-  console.log(dados)
+
+  const {name, email, phone} = dados
+  console.log(name, email, phone)
 }
+
+console.log('estudando')
