@@ -8,7 +8,13 @@ const obj = {
 }
 
 //desestructuringAssignment:
-const { nome, idade } = obj
+const {
+  nome: nomeDoUsuario,//da pra fazer uma espécie de alias
+  idade
+} = obj //cria-se uma varíavel para cada propriedade do objeto
+
+console.log(nomeDoUsuario)
+console.log(idade)
 
 function transformarEmJson (response) {
   //console.log(response)
@@ -33,8 +39,7 @@ async function aoClicarBotao () {
     .then(transformarEmJson)
     .catch(exibirErro)
 
+  //aplicando desestructuringAssignment no objeto dados
   const {name, email, phone} = dados
   console.log(name, email, phone)
 }
-
-console.log('estudando')
