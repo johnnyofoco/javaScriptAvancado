@@ -16,5 +16,5 @@ function lerMensagemDigitada () {
     reject()
   })
 }
-
+//Evento
 btnEnviar.addEventListener('click', lerMensagemDigitada)
